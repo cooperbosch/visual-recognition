@@ -28,3 +28,5 @@ class Profile:
         """
         
 database = {}
+
+# database = {name(string), name(class)}
