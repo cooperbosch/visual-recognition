@@ -1,7 +1,7 @@
-
-import numpy as np
+import numpy
 
 class Profile:
+    import numpy as np
     def __init__(self, name, arr):
         self.name = name
         self.mean_descriptor = np.mean(arr, axis=0)
@@ -16,7 +16,7 @@ class Profile:
         
     def __call__(self, newarr):
         
-        self.array = np.vstack((self.array, newarr))
+        self.array = np.vstack(( self.array, newarr))
         self.mean_descriptor = np.mean(self.array, axis=0)
     
         """
