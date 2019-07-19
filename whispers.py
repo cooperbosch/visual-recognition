@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from node import *
+import collections
 
 def histogram(db):
     same_x=list()
@@ -31,3 +32,27 @@ def make_graph(dlist, thresh):
                     nlist.append(j)
         graph.append(Node(i,nlist,dlist[i]))
     return graph
+
+def whispers_algor(graph):
+
+    adj = np.zeros(len(graph),len(graph))
+    llist=tuple(i.label for i in graph)
+    prev=tuple(-1 for i in range(len(graph)))
+    count=0
+    while llist!=prev and count<100:
+        for index,nd in enumerate(graph):
+            mostCommon = collections.Counter(nd.neighbors).most_common(1)[0]
+            nd.label = mostCommon
+            adj[index,nd.label] = 1
+            adj[nd.label,index] = 1
+        prev=llist
+        llist=tuple(i.label for i in graph)
+        count+=1
+    print(count)
+
+    plot_graph(graph,adj)
+
+
+
+
+
