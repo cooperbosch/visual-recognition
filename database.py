@@ -5,7 +5,6 @@ class Profile:
     def __init__(self, name, arr):
         self.name = name
         self.mean_descriptor = np.mean(arr)
-        self.num_of_samples = 1
         self.array = arr
         
         """
