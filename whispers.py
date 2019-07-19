@@ -6,9 +6,9 @@ import collections
 def histogram(db):
     same_x=list()
     diff_x=list()
-    vals=[i.arr for i in list(db.values())]
+    vals=[i.array for i in list(db.values())]
     for v in vals:
-        arr=v.arr
+        arr=v
         for i in range(len(arr)):
             for j in range(i+1,len(arr)):
                 same_x.append(np.linalg.norm(arr[i]-arr[j]))
@@ -17,7 +17,7 @@ def histogram(db):
             for v1 in vals[i]:
                 for v2 in vals[j]:
                     diff_x.append(np.linalg.norm(v1-v2))
-    bins=np.linspace(0,2,20)  
+    bins=np.linspace(0.3,0.45,10)
     plt.hist(same_x,bins,alpha=0.5,label="same")
     plt.hist(diff_x,bins,alpha=0.5,label="different")
 

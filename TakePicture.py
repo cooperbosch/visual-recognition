@@ -5,6 +5,7 @@ import dlib_models
 from dlib_models import download_model, download_predictor, load_dlib_models
 download_model()
 download_predictor()
+load_dlib_models()
 from dlib_models import models
 face_detect = models["face detect"]
 face_rec_model = models["face rec"]
@@ -18,9 +19,12 @@ def take_pic():
 def get_descriptor(pic):
     load_dlib_models()
     detections = list(face_detect(pic))
-    shape = shape_predictor(pic, detections[0])
-    descriptor = np.array(face_rec_model.compute_face_descriptor(pic, shape))
-    return (descriptor)
+    des = []
+    for i in range(len(detections)):
+        shape = shape_predictor(pic, detections[i])
+        descriptor = np.array(face_rec_model.compute_face_descriptor(pic, shape))
+        des.append(descriptor/np.linalg.norm(descriptor))
+    return des
 
 
 def find_rectangles(pic):
@@ -43,4 +47,5 @@ def find_rectangles(pic):
     '''
 
     return rectangles
+
 

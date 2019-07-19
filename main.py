@@ -1,9 +1,11 @@
 import database
-import Node
+from node import *
 import whispers
 import TakePicture
+from matplotlib.patches import Rectangle
+from matplotlib import pyplot as plt
 
-
+'''
 #take picture
 
 TakePicture.take_pic()
@@ -34,3 +36,20 @@ for k, d in enumerate(detections):
 #ask for names of unknowns
 
 #ask user if they want to add to database
+'''
+def main():
+    while input('take picture?\n') != 'q':
+        picture = TakePicture.take_pic()
+        fig, ax = plt.subplots()
+        ax.imshow(picture)
+        rectangles = TakePicture.find_rectangles(picture)
+        for r in rectangles:
+            rect = Rectangle((r[0], r[1]), r[2], r[3], linewidth=1, edgecolor='r', facecolor='none')
+
+            ax.add_patch(rect)
+
+
+
+if __name__ == "__main__":
+    main()
+
