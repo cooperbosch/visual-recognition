@@ -13,6 +13,7 @@ class Profile:
         
         """
         
+        
     def __call__(self, newarr):
         
         self.array = np.vstack(self.array, newarr, axis=0)
