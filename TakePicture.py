@@ -13,6 +13,7 @@ def take_pic():
     face_detect = models["face detect"]
     face_rec_model = models["face rec"]
     shape_predictor = models["shape predict"]
+    detections = list(face_detect(pic))
     shape = shape_predictor(pic, detections[0])
     descriptor = np.array(face_rec_model.compute_face_descriptor(pic, shape))
     return (pic, face_detect, face_rec_model, shape_predictor, descriptor)
