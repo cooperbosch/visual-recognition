@@ -4,6 +4,7 @@ import whispers
 import TakePicture
 from matplotlib.patches import Rectangle
 from matplotlib import pyplot as plt
+import numpy as np
 
 '''
 #take picture
