@@ -29,5 +29,5 @@ def make_graph(dlist, thresh):
             if i!=j:
                 if np.linalg.norm(dlist[i]-dlist[j]) < thresh:
                     nlist.append(j)
-        graph.append(Node(i,nlist,dlist[i])
+        graph.append(Node(i,nlist,dlist[i]))
     return graph
