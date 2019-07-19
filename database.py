@@ -16,8 +16,8 @@ class Profile:
         
     def __call__(self, newarr):
         
-        self.array = np.vstack(self.array, newarr, axis=0)
-        self.mean_descriptor = np.mean(self.array)
+        self.array = np.vstack((self.array, newarr))
+        self.mean_descriptor = np.mean(self.array, axis=0)
     
         """
         newarr = 128 vector numpy array of new picture of person
